@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Function to check if water level is above 8
+check_water_level() {
+    read -p "Is the water at level 8? (yes/no): " water_level
+    if [[ $water_level == "yes" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Function to brew the coffee
+brew_coffee() {
+    echo "Brewing coffee..."
+    sleep 3
+    echo "Coffee is ready!"
+}
+
+# Main function
+main() {
+    # Check water level
+    if check_water_level; then
+        # If water level is enough, brew coffee
+        brew_coffee
+    else
+        # If water level is not enough, add more water
+        echo "Water level is not enough. Please add more water."
+        sleep 5
+        # Then brew coffee
+        brew_coffee
+    fi
+}
+
+# Run the main function
+main
+
